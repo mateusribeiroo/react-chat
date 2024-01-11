@@ -37,7 +37,7 @@ export default function Chat({socket}){
         btn.click();
         
         }
-      });
+    });
 
     return(
         <div className={style['chat-container']}>
@@ -51,12 +51,19 @@ export default function Chat({socket}){
                                     <p className={style['chat-self-message']} key={index}>{message.text}</p>
                                 </div>
                             ) 
-                        }else{
+                        }else if(message.author == 'server'){
                             return (
-                                    <div className={style['chat-someone-message-container']}>
-                                        <p className={style['chat-someone-message']} key={index}>{message.author ? message.author+':' : ''}  {message.text}</p>
-                                    </div>
-                                )
+                                <div className={style['chat-server-message-container']}>
+                                    <p className={style['chat-server-message']} key={index}>{message.text}</p>
+                                </div>
+                            )
+                        }
+                        else{
+                            return (
+                                <div className={style['chat-someone-message-container']}>
+                                    <p className={style['chat-someone-message']} key={index}>{message.author ? message.author+':' : ''}  {message.text}</p>
+                                </div>
+                            )
                       
                     }})
                 }

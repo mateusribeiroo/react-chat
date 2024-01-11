@@ -17,7 +17,7 @@ io.on('connection', socket => {
 
         io.emit('receive_message', {
             text: 'Usuário '+socket.data.username+' entrou',
-            author: null
+            author: 'server'
         })
     })
 
